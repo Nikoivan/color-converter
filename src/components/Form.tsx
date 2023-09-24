@@ -14,7 +14,7 @@ export default function Form({
         className="input"
         id="inColor"
         name="color"
-        value={value.backgroundColor}
+        value={value}
         onChange={props}
       />
     </form>
