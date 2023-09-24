@@ -1,5 +1,6 @@
 import { useState, FormEvent, ChangeEvent, useRef } from "react";
 import convertColor from "../functions/convertColor";
+import Form from "./Form";
 import Result from "./Result";
 
 export default function Converter() {
@@ -17,6 +18,7 @@ export default function Converter() {
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target;
     changeForm((color) => ({ ...color, [name]: value }));
+    console.log(form.color);
   };
 
   const defaultStyles = {
@@ -25,15 +27,7 @@ export default function Converter() {
 
   return (
     <div className="convert" style={result ? result.color : defaultStyles}>
-      <form>
-        <input
-          className="input"
-          id="inColor"
-          name="color"
-          value={form.color}
-          onChange={handleChange}
-        />
-      </form>
+      <Form props={handleChange} value={form.color} />
       <Result props={result ? result.content : null} />
     </div>
   );
